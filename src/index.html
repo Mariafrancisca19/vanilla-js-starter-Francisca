@@ -2,43 +2,32 @@
 <html>
 
 <head>
-	<title>Ejemplo básico</title>
+	<title>TO-DO APP</title>
 	<link rel="stylesheet" href="/src/Estilos/TO-DO.css">
 	<meta charset="UTF-8" />
 </head>
 
 <body>
-<div class="centro">
-	<h1>TAREAS POR HACER</h1>
-<div class="cont">
-<div>
-	<input type="text" id="ingresar">
-</div>
+	<div class="cont-todo">
+		<h1 class="tareas">TAREAS POR HACER</h1>
 
-<div>
-	<button id="agregar"> Agregar</button>
-</div>
-
-</div>
-
-<div class="izquierda"></div>
-<h2> Tareas 
-	Completas
-</h2>
-
-<div>
-	<button class="forma">0</button>
-</div>
-
-<div class="cuadro">
-<input type="checkbox" ><label for="text"></label><br>
-
-<input type="checkbox" id="tarea"><label for="text"></label>
+		<input type="text" id="ingresar" placeholder="Ingresar Tarea">
 
 
-</div>
+		<button class="agregar" id="btn-agregar"> Agregar</button>
+		<button class="eliminar" id="btn-eliminar">Eliminar</button>
 
-</div>
+
+		<h2 class="tarea"> Tareas
+			Completas
+		</h2>
+
+		<button class="btn-contador">0</button>
+
+		<input type="checkbox" id="tarea"><label for="text"></label>
+
+
+	</div>
 
 
 	<script src="./index.js" type="module"></script>

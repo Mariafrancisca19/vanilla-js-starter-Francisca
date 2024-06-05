@@ -15,14 +15,16 @@ async function datos(){
         p.innerHTML=tarea.nombre
 
         let contenedor = document.createElement("div")
-        contenedor.innerHTML = tarea.nombre
-        
         let checkBox = document.createElement("checkbox")
-        checkBox.innerHTML = tarea.nombre
 
         let lista = document.getElementById("lista")
         let botonEliminar = document.createElement("button")
         botonEliminar.innerHTML = "DELETE 🗑️"
+
+        botonEliminar.addEventListener("click",()=>{
+          //FUNCION DELETE
+          eliminarTarea(tarea.id)
+        })
 
         contenedor.appendChild(checkBox)
         contenedor.appendChild(p)
@@ -106,8 +108,8 @@ async function eliminarTarea(id) {
   })
   let remover = await removerTarea.json()
   console.log(remover);
-  actualizar()          /*llamar a la funcion del put*/ 
-
+  //  actualizar()          /*llamar a la funcion del put*/ 
+   location.reload() //Actualiza la pagina
   } catch (error) {
     console.error(error)
   }

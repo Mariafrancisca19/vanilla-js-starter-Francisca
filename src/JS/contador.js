@@ -26,3 +26,5 @@ function listaTareas() {
     itemLista.addEventListener("click",marcador)*/
 
 /*METODO GET*/
+
+

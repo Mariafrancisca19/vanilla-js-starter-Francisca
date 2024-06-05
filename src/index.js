@@ -13,16 +13,23 @@ async function datos(){
       datos.forEach(tarea=>{
         let p = document.createElement("li")
         p.innerHTML=tarea.nombre
+
+        let contenedor = document.createElement("div")
+        contenedor.innerHTML = tarea.nombre
+        
+        let checkBox = document.createElement("checkbox")
+        checkBox.innerHTML = tarea.nombre
+
+        let lista = document.getElementById("lista")
+        let botonEliminar = document.createElement("button")
+        botonEliminar.innerHTML = "DELETE 🗑️"
+
+        contenedor.appendChild(checkBox)
+        contenedor.appendChild(p)
+        p.appendChild(checkBox)
+        p.appendChild(botonEliminar)
         lista.appendChild(p)
-
-         let contenedor = document.createElement("div")
-        //  contenedor.innerHTML = tarea.nombre
-        //  lista.appendChild(contenedor)
-
-         let checkBox = document.createElement("checkbox")
-         checkBox.innerHTML = tarea.nombre
-         lista.appendChild(contenedor)
-
+        
 
       })
       console.log(datos);
@@ -30,6 +37,8 @@ async function datos(){
    console.error(error);   
   }
 }
+datos()
+
 
 //METODO POST : Crea una tarea con el objeto,Se le pasa un objeto con los datos que se quieren agregar
 
@@ -77,7 +86,7 @@ async function actualizar(id) {
   //hacer un console aqui
   let nuevoModificador = await respuesta.json()
   console.log(nuevoModificador);
-  guardarDatos()
+  guardarDatos()   //llamar a la funcion post dentro del put
   
  } catch (error) {
   console.error(error);
@@ -86,7 +95,22 @@ async function actualizar(id) {
 
 //DELETE : Dado el ID, remueve la tarea
 
+async function eliminarTarea(id) {
+  try {
+    const removerTarea = await fetch (`http://localhost:3000/api/task/${id}`, {
+    method: "DELETE",
+    headers:{
+      "Content-type": "application/json; charset=UTF-8"
+    },
 
+  })
+  let remover = await removerTarea.json()
+  console.log(remover);
+  actualizar()          /*llamar a la funcion del put*/ 
 
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 

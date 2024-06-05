@@ -3,7 +3,7 @@ let btnAgregar = document.getElementById("btn-agregar");
 let btneliminar = document.getElementById("btn-eliminar");
 let lista = document.getElementById("lista")
 
-/*METODO GET*/
+/*METODO GET:Retorna todas las tareas*/
 
 async function datos(){
   try {
@@ -31,7 +31,8 @@ async function datos(){
   }
 }
 
-//METODO POST
+//METODO POST : Crea una tarea con el objeto,Se le pasa un objeto con los datos que se quieren agregar
+
 async function guardarDatos() {
   try {
     let tarea = {
@@ -58,19 +59,33 @@ btnAgregar.addEventListener("click", () => {
   guardarDatos()
 })
 
+//PUT : Modifica la tarea por el ID. Se le pasa un objeto con los datos que se quieren modificar.
 
+async function actualizar(id) {
+ try {
+  let modificarTarea ={
+    estado:true
+  }
 
-/*POST*/
+  const respuesta = await fetch(`http://localhost:3000/api/task/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    },
+    body: JSON.stringify(modificarTarea)
+  })
+  //hacer un console aqui
+  let nuevoModificador = await respuesta.json()
+  console.log(nuevoModificador);
+  guardarDatos()
+  
+ } catch (error) {
+  console.error(error);
+ } 
+}
 
+//DELETE : Dado el ID, remueve la tarea
 
-
-
-/*PUT*/
-
-
-
-
-/*DELETE*/
 
 
 

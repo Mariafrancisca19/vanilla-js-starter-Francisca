@@ -33,13 +33,12 @@ async function datos(){
         p.appendChild(checkBox)
         p.appendChild(botonEliminar)
         lista.appendChild(p)
-
         checkBox.addEventListener("click", () =>{
           if (checkBox.checked ==true) {
             actualizar(tarea.id)
-            contadorTarea.value++
+            contadorTareas.value++
           } else {
-            contadorTarea.value--
+            contadorTareas.value--
           }
         })
 
@@ -88,7 +87,6 @@ async function actualizar(id) {
   let modificarTarea ={
     estado:true
   }
-
   const respuesta = await fetch(`http://localhost:3000/api/task/${id}`, {
     method: "PUT",
     headers: {
@@ -99,7 +97,7 @@ async function actualizar(id) {
   //hacer un console aqui
   let nuevoModificador = await respuesta.json()
   console.log(nuevoModificador);
-  guardarDatos()   //llamar a la funcion post dentro del put
+     //llamar a la funcion post dentro del put
   
  } catch (error) {
   console.error(error);
@@ -108,6 +106,11 @@ async function actualizar(id) {
 
 //DELETE : Dado el ID, remueve la tarea
 
+
+/*
+Recuperamos el id para eliminar una tarea en especifico. Cada vez que se toque esa tarea, se 
+pasara por parametro el id de esa tarea y se elimina SOLO esa tarea
+*/
 async function eliminarTarea(id) {
   try {
     const removerTarea = await fetch (`http://localhost:3000/api/task/${id}`, {

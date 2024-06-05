@@ -2,6 +2,7 @@ let ingresar = document.getElementById("ingresar");
 let btnAgregar = document.getElementById("btn-agregar");
 let btneliminar = document.getElementById("btn-eliminar");
 let lista = document.getElementById("lista")
+let contadorTareas = document.getElementById("contadorTarea")
 
 /*METODO GET:Retorna todas las tareas*/
 
@@ -15,11 +16,12 @@ async function datos(){
         p.innerHTML=tarea.nombre
 
         let contenedor = document.createElement("div")
-        let checkBox = document.createElement("checkbox")
+        let checkBox = document.createElement("input")
+        checkBox.type = "checkbox"
 
         let lista = document.getElementById("lista")
         let botonEliminar = document.createElement("button")
-        botonEliminar.innerHTML = "DELETE 🗑️"
+        botonEliminar.innerHTML = "🗑️"
 
         botonEliminar.addEventListener("click",()=>{
           //FUNCION DELETE
@@ -31,7 +33,16 @@ async function datos(){
         p.appendChild(checkBox)
         p.appendChild(botonEliminar)
         lista.appendChild(p)
-        
+
+        checkBox.addEventListener("click", () =>{
+          if (checkBox.checked ==true) {
+            actualizar(tarea.id)
+            contadorTarea.value++
+          } else {
+            contadorTarea.value--
+          }
+        })
+
 
       })
       console.log(datos);

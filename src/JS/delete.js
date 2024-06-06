@@ -1,0 +1,1 @@
+import { eliminarTarea } from "./index.js";

@@ -1,39 +1,40 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-size: 15px;
-    margin-top: 30px;
+ 
 
 }
 
 /*contenedor de todo*/
 .cont-todo{
     width: 500px;
-    margin: 0 auto;
-    border: 5px solid #ccc;
-    padding: 200px;
+    margin:  0 auto;
+    border: 50px solid #ccc;
+    padding: 220px;
     border-radius: 50px;
-
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(154, 114, 134);
 }
+
 
 /*titulo*/
 .tareas{
     margin-bottom: 20px;
+    
 }
 
 /*cuadro del input donde se guardan las tareas*/
 .ingresar{
-    width: 200px;
-    padding: 5px;
+    width: 300px;
+    padding: 7px;
     margin-right: 10px;
 
 }
 
 /*boton de agregarr tareas*/
 .agregar{
-    padding: 10px 10px;
+    padding: 15px 15px;
     border: none;
-    border-radius: 15px;
+    border-radius: 25px;
     cursor: pointer;
     background-color: #b2ee8d;
 
@@ -44,29 +45,13 @@ background-color: rgb(255,156, 189);
 
 }
 
-/*boton eliminar*/
-.eliminar{
-    padding: 10px 10px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: #b2ee8d;
-
-}
-
-.eliminar:hover{
-    background-color: rgb(255,156, 189);
-
-}
-
 /*contador de tareas*/
 .btn-contador{
-    display: flex;
-    width: 50px;
-    height: 50px;
+
     margin-left: 220px;
     border: none;
-
+    background-color:#b2ee8d;
+    text-align: center;
 }
 
 .btn-contador{
@@ -77,4 +62,20 @@ background-color: rgb(255,156, 189);
     
 }
 
+.btn-contador:hover{
+    background-color: rgb(255,156, 189);
 
+}
+
+.tareaConta{
+position: relative;
+left: 400px;
+margin-top: -100px;   /*forzar mover */
+
+}
+
+.tarea{
+
+margin-left: 80px;
+
+}

@@ -2,6 +2,9 @@ let ingresar = document.getElementById("ingresar");
 let btnAgregar = document.getElementById("btn-agregar");
 let lista = document.getElementById("lista");
 let contadorTareas = document.getElementById("contadorTarea");
+import { eliminarTarea } from "./JS/delete.js";
+import { actualizar } from "./JS/put.js";
+
 
 /*METODO GET:Retorna todas las tareas*/
 
@@ -89,57 +92,6 @@ btnAgregar.addEventListener("click", () => {
   }
 })
 
-//PUT : Modifica la tarea por el ID. Se le pasa un objeto con los datos que se quieren modificar.
-
-async function actualizar(id) {
- try {
-  let modificarTarea ={
-    estado:true
-  }
-  const respuesta = await fetch(`http://localhost:3000/api/task/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    },
-    body: JSON.stringify(modificarTarea)
-  })
-  //hacer un console aqui
-  let nuevoModificador = await respuesta.json()
-  console.log(nuevoModificador);
-     //llamar a la funcion post dentro del put
-  
- } catch (error) {
-  console.error(error);
- } 
-}
-
-//DELETE : Dado el ID, remueve la tarea
-
-
-/*
-Recuperamos el id para eliminar una tarea en especifico. Cada vez que se toque esa tarea, se 
-pasara por parametro el id de esa tarea y se elimina SOLO esa tarea
-*/
-async function eliminarTarea(id) {
-  try {
-    const removerTarea = await fetch (`http://localhost:3000/api/task/${id}`, {
-    method: "DELETE",
-    headers:{
-      "Content-type": "application/json; charset=UTF-8"
-    },
-
-  })
-  let remover = await removerTarea.json()
-  console.log(remover);
-   actualizar()          /*llamar a la funcion del put*/ 
-    datos()    //Actualiza la pagina
-    location.reload()
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-export {eliminarTarea}
 
 
 /* FUNCION al darle enter que no se borre 

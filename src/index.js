@@ -17,21 +17,27 @@ async function datos(){
         let contenedor = document.createElement("div")
         let checkBox = document.createElement("input")
         checkBox.type = "checkbox"
-
+        
         let lista = document.getElementById("lista")
         let botonEliminar = document.createElement("button") //Funcion para el boton elimiar
         botonEliminar.innerHTML = "🗑️"
-
+        
         botonEliminar.addEventListener("click",()=>{
           //FUNCION DELETE
           eliminarTarea(tarea.id)
-        })
+          })
 
+          checkBox.checked = tarea.estado
+          if (checkBox.checked) {
+            contadorTareas.value++
+          }
+        contenedor.classList.add("cont-tareas")
         contenedor.appendChild(checkBox)
         contenedor.appendChild(p)
         p.appendChild(checkBox)
         p.appendChild(botonEliminar)
-        lista.appendChild(p)
+        lista.appendChild(contenedor)
+
         checkBox.addEventListener("click", () =>{  //funcion para el contador
           if (checkBox.checked ==true) {
             actualizar(tarea.id)
@@ -40,6 +46,7 @@ async function datos(){
             contadorTareas.value--
           }
         })
+
 
 
       })
@@ -70,13 +77,16 @@ async function guardarDatos() {
     let datosG = await respuesta.json()
     console.log(datosG);
     datos()
+    location.reload()
   } catch (error) {
     console.error(error);
   }
 }
 
 btnAgregar.addEventListener("click", () => {
-  guardarDatos()
+  if (ingresar.value!= "") {
+    guardarDatos()
+  }
 })
 
 //PUT : Modifica la tarea por el ID. Se le pasa un objeto con los datos que se quieren modificar.
@@ -121,11 +131,31 @@ async function eliminarTarea(id) {
   })
   let remover = await removerTarea.json()
   console.log(remover);
-  //  actualizar()          /*llamar a la funcion del put*/ 
-   location.reload() //Actualiza la pagina
+   actualizar()          /*llamar a la funcion del put*/ 
+    datos()    //Actualiza la pagina
+    location.reload()
   } catch (error) {
     console.error(error)
   }
 }
 
 export {eliminarTarea}
+
+
+/* FUNCION al darle enter que no se borre 
+Que si esta vacia la tarea no se agregue */  
+
+ingresar.addEventListener("keydown",(e) =>{
+if (e.key == "Enter" && ingresar.value!= "") {
+  guardarDatos()
+}
+});
+
+btnAgregar.addEventListener("click", () => {
+  if (ingresar.value!= "") {
+    guardarDatos()
+  }else{
+    alert ("NO TIENE DATOS")
+  }
+
+})

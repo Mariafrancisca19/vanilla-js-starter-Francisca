@@ -1,4 +1,5 @@
-
+import { actualizar } from "./put";
+import { datos } from "./get";
 //DELETE : Dado el ID, remueve la tarea
 
 
@@ -7,7 +8,7 @@ Recuperamos el id para eliminar una tarea en especifico. Cada vez que se toque e
 pasara por parametro el id de esa tarea y se elimina SOLO esa tarea
 */
 
-async function eliminarTarea(id) {
+export async function eliminarTarea(id) {
     try {
       const removerTarea = await fetch (`http://localhost:3000/api/task/${id}`, {
       method: "DELETE",
@@ -26,4 +27,4 @@ async function eliminarTarea(id) {
     }
   }
   
-  export {eliminarTarea}
+ 

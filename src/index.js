@@ -3,6 +3,9 @@ let btnAgregar = document.getElementById("btn-agregar");
 let lista = document.getElementById("lista");
 export let contadorTareas = document.getElementById("contadorTarea");
 
+let inputBuscar = document.getElementById("buscar")   /*funcion para filtar tarea*/
+let btnbuscar = document.getElementById("btnbuscar")
+
 import { eliminarTarea } from "./JS/delete.js";
 import { actualizar } from "./JS/put.js"
 import { datos } from "./JS/get.js";
@@ -37,9 +40,6 @@ import { datos } from "./JS/get.js";
   }
 
   
-  
-  
-  
   /* FUNCION al darle enter que no se borre 
   Que si esta vacia la tarea no se agregue */  
   
@@ -58,3 +58,23 @@ import { datos } from "./JS/get.js";
             })
 
             
+
+ /*barra de busqueda de tareas*/
+ async function buscarTarea(dato) {
+  const response = await fetch ("http://localhost:3000/api/task");
+  const text = await response.json();
+
+  let filterTareas = text.filter(task => task.dato === dato);
+
+  if (filterTareas.length === 0) {
+    alert ("ERROR TAREA NO ENCONTRADA");
+  }else{
+    filterTareas.forEach(filterTarea => {
+      alert (`Tarea encontrada ${filterTarea.dato} `);
+    });
+
+  }}           
+
+  btnbuscar.addEventListener("click",() => {
+    buscarTarea(buscar.value);
+  });

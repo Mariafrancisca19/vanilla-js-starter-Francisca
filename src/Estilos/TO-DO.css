@@ -95,10 +95,27 @@ margin-left: 80px;
 
 .nada{
     display: none;
+    font-weight: 900;
 }
 .square{
     border: 3px solid black;
     padding: 10px;
     margin: 10px;
     width: 500px;
+}
+
+.linea{
+
+padding: 6px;
+background-color: #ccc;
+border: none;
+border-radius: 30px;
+
+}
+
+.TO{
+margin-left: 700px;
+font-weight: 800;
+font-size: 20px;
+font-style: oblique;
 }

@@ -44,13 +44,18 @@ import { datos } from "./JS/get.js";
   Que si esta vacia la tarea no se agregue */  
   
   ingresar.addEventListener("keydown",(e) =>{
-    if (e.key == "Enter" && ingresar.value!= "") {
-      guardarDatos()
+    if (e.key == "Enter") {
+      if ( ingresar.value.trim()!= "") {
+        
+        guardarDatos()
+      }else{
+        alert("No hay Datos")
+      }
       }
       });
       
       btnAgregar.addEventListener("click", () => {
-        if (ingresar.value!= "") {
+        if (ingresar.value.trim()!= "") {
           guardarDatos()
           }else{
             alert ("NO TIENE DATOS")

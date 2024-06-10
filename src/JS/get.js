@@ -51,14 +51,14 @@ async function datos(){
           eliminarTarea(tarea.id)
           await Toast.fire({
             title: 'Error!',
-            text: 'Do you want to continue',
+            text: 'Do you want to continue',        /*sweetalert*/
             icon: 'error',
             confirmButtonText: 'Cool'
           })    
           })
           
           checkBox.checked = tarea.estado
-          if (checkBox.checked) {
+          if (checkBox.checked) {  /* funcion del checkbox*/
             contadorTareas.value++
             }
             contenedor.classList.add("cont-tareas")

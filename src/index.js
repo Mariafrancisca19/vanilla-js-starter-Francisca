@@ -64,17 +64,24 @@ import { datos } from "./JS/get.js";
   const response = await fetch ("http://localhost:3000/api/task");
   const text = await response.json();
 
-  let filterTareas = text.filter(task => task.dato === dato);
+
+  console.log(dato)
+
+  let filterTareas = text.map(task => task.nombre === dato);
+
+  console.log("Esto es lo que llega al IF "+filterTareas);
 
   if (filterTareas.length === 0) {
     alert ("ERROR TAREA NO ENCONTRADA");
   }else{
     filterTareas.forEach(filterTarea => {
-      alert (`Tarea encontrada ${filterTarea.dato} `);
+      alert (`Tarea encontrada ${filterTarea} `);
+      
     });
 
   }}           
 
   btnbuscar.addEventListener("click",() => {
-    buscarTarea(buscar.value);
+    buscarTarea(inputBuscar.value);
+    // console.log(inputBuscar.value.length);
   });
